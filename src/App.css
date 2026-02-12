@@ -1,0 +1,28 @@
+#root {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.main-content {
+  padding-top: 120px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #F5F5F5;
+  color: #333333;
+}
+
+.main-content h1 {
+  font-size: 3rem;
+  color: #000000;
+  margin-bottom: 1rem;
+}
+
+.main-content p {
+  font-size: 1.25rem;
+  color: #666666;
+}
