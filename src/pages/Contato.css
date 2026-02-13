@@ -28,7 +28,7 @@
   width: 280px;
   height: 320px;
   background: #e63946;
-  border-radius: 30px;
+  border-radius: 60px 20px 30px 10px;
   top: 30px;
   left: 50%;
   transform: translateX(-50%);
@@ -193,6 +193,7 @@
 
   .contato-card-bg {
     width: 220px;
+    border-radius: 60px 20px 30px 10px;
     height: 270px;
   }
 

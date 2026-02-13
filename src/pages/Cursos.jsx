@@ -119,12 +119,6 @@ function Cursos() {
         ))}
       </div>
 
-      {/* Ver mais */}
-      <div className="cursos-ver-mais">
-        <button className="ver-mais-btn" aria-label="Ver mais cursos">
-          <span>&#8964;</span>
-        </button>
-      </div>
     </section>
   )
 }

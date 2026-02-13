@@ -18,7 +18,7 @@ const noticias = [
   },
   {
     id: 2,
-    imagem: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=300&h=200&fit=crop',
+    imagem: '/public/BANNER.webp',
     data: '28/01/2026',
     titulo: 'Formatura evolutec setembro',
     link: '#',
