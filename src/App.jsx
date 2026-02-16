@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar'
 import Banner from './components/Banner'
-import SobreEscola from './components/SobreEscola'
+import Autoridade from './components/autoridade'
+import RedesSociais from './components/RedesSociais'
 import Cursos from './pages/Cursos'
 import Contato from './pages/Contato'
 import Blog from './pages/Blog'
@@ -12,9 +13,10 @@ function App() {
     <>
       <Navbar/>
       <Banner/>
-      <SobreEscola/>
+      <Autoridade/>
       <Cursos/>
       <Contato/>
+      <RedesSociais/>
       <Blog/>
       <Footer/>
     </>

@@ -24,23 +24,13 @@
 .footer-logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
 }
 
-.footer-logo-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #e63946, #ff6b35);
-  color: #fff;
-  font-weight: 800;
-  font-size: 1.15rem;
-  text-transform: lowercase;
+.footer-logo-image{
+  width: 40px;
+  height: 40px;
+  margin-right: 0.75rem;
 }
-
 .footer-logo-text {
   font-size: 1.3rem;
   font-weight: 700;

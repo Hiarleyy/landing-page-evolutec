@@ -1,6 +1,6 @@
-  import './SobreEscola.css'
+  import './autoridade.css'
 
-function SobreEscola() {
+function Autoridade() {
   return (
     <section className="sobre-escola" id="sobre">
       <div className='container-autoridade'>
@@ -50,4 +50,4 @@ function SobreEscola() {
   )
 }
 
-export default SobreEscola
+export default Autoridade
