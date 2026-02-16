@@ -24,9 +24,6 @@ function RedesSociais() {
       <div className="redes-container">
         <div className="redes-left">
           <div className="social-icons">
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon twitter">
-              <i className="fab fa-twitter"></i>
-            </a>
             <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="social-icon youtube">
               <i className="fab fa-youtube"></i>
             </a>

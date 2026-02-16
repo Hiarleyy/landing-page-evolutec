@@ -5,6 +5,8 @@ import RedesSociais from './components/RedesSociais'
 import Cursos from './pages/Cursos'
 import Contato from './pages/Contato'
 import Blog from './pages/Blog'
+import Depoimentos from './components/Depoimentos'
+import Mapa from './components/Mapa'
 import Footer from './components/Footer'
 import './App.css'
 
@@ -15,9 +17,11 @@ function App() {
       <Banner/>
       <Autoridade/>
       <Cursos/>
+      <Depoimentos/>
       <Contato/>
       <RedesSociais/>
       <Blog/>
+      <Mapa/>
       <Footer/>
     </>
   )

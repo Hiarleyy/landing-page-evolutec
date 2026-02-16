@@ -1,0 +1,138 @@
+.mapa-section {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.mapa-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mapa-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.mapa-header h2 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.mapa-header p {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 0;
+}
+
+.mapa-content {
+  width: 100%;
+  height: 500px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  margin-bottom: 50px;
+}
+
+.mapa-leaflet {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Customização do popup */
+.leaflet-popup-content-wrapper {
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.popup-content h3 {
+  font-size: 1.2rem;
+  color: #e00606;
+  margin: 0 0 8px 0;
+  font-weight: 600;
+}
+
+.popup-content p {
+  font-size: 0.95rem;
+  color: #fa7272;
+  margin: 0;
+}
+
+/* Grid de informações */
+.mapa-info {
+  margin-top: 40px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.info-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.info-card h4 {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin: 0 0 10px 0;
+  font-weight: 600;
+}
+
+.info-card p {
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .mapa-section {
+    padding: 50px 15px;
+  }
+
+  .mapa-header h2 {
+    font-size: 2rem;
+  }
+
+  .mapa-header p {
+    font-size: 1rem;
+  }
+
+  .mapa-content {
+    height: 400px;
+    margin-bottom: 30px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .info-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mapa-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .mapa-content {
+    height: 300px;
+  }
+}
