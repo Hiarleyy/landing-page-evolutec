@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './Contato.css'
 
 const cursosOpcoes = [
@@ -18,6 +18,28 @@ function Contato() {
     cidade: '',
     lgpd: false,
   })
+
+  const [isVisible, setIsVisible] = useState(false)
+  const avatarRef = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting)
+      },
+      { threshold: 0.2 }
+    )
+
+    if (avatarRef.current) {
+      observer.observe(avatarRef.current)
+    }
+
+    return () => {
+      if (avatarRef.current) {
+        observer.unobserve(avatarRef.current)
+      }
+    }
+  }, [])
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target
@@ -41,9 +63,10 @@ function Contato() {
         <div className="contato-visual">
           <div className="contato-card-bg" />
           <img
+            ref={avatarRef}
             src="/mascote.png"
             alt="Mascote Evolutec"
-            className="contato-avatar"
+            className={`contato-avatar ${isVisible ? 'visible' : ''}`}
           />
 
           <div className="contato-social contato-social--whatsapp">

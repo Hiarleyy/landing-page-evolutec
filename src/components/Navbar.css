@@ -1,6 +1,95 @@
-.navbar {
+/* Top Bar */
+.top-bar {
   position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ee0e0e;
+  z-index: 1001;
+  padding: 0.5rem 0;
+}
+
+.top-bar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-bar-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+}
+
+.top-bar-link:hover {
+  opacity: 0.85;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.whatsapp-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+}
+
+.top-bar-right {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.top-bar-btn {
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.top-bar-btn.btn-outline {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1.5px solid #ffffff;
+}
+
+.top-bar-btn.btn-outline:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.top-bar-btn.btn-yellow {
+  background-color: #f4a300;
+  color: #0d0d0d;
+  border: none;
+}
+
+.top-bar-btn.btn-yellow:hover {
+  background-color: #ffc107;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(244, 163, 0, 0.4);
+}
+
+/* Main Navbar */
+.navbar {
+  position: fixed;
+  height: 70px;
+  top: 2.5rem;
   left: 0;
   width: 100%;
   background-color: #fcfcfc;
@@ -22,6 +111,7 @@
   align-items: center;
   gap: 0.5rem;
   text-decoration: none;
+  margin-top: 5px;
 }
 
 .logo-icon {
@@ -60,7 +150,7 @@
   justify-content: center;
   list-style: none;
   gap: 1.75rem;
-  margin: 0;
+  margin: 10px 0 0 0;
   padding: 0;
   flex: 1;
 }
@@ -91,13 +181,7 @@
   width: 100%;
 }
 
-/* Buttons */
-.navbar-buttons {
-  display: flex;
-  gap: 0.75rem;
-  align-items: center;
-}
-
+/* Buttons (kept for potential future use) */
 .btn-red,
 .btn-yellow {
   display: inline-block;
@@ -168,18 +252,42 @@
 
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
+  .top-bar-container {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.65rem 1rem;
+  }
+  
+  .top-bar-right {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .top-bar-link {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
+  }
+  
+  .top-bar-btn {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .whatsapp-link {
+    padding: 0.35rem 0.85rem;
+  }
+
   .navbar-toggle {
     display: flex;
     margin-left: auto;
   }
 
-  .navbar-links,
-  .navbar-buttons {
+  .navbar-links {
     display: none;
   }
 
-  .navbar-links.active,
-  .navbar-buttons.active {
+  .navbar-links.active {
     display: flex;
   }
 
@@ -211,19 +319,5 @@
 
   .navbar-links li a:hover {
     background-color: #f0f0f0;
-  }
-
-  .navbar-buttons {
-    width: 100%;
-    justify-content: center;
-    padding: 0.5rem 0 1rem;
-    gap: 1rem;
-  }
-
-  .navbar-buttons .btn-red,
-  .navbar-buttons .btn-yellow {
-    flex: 1;
-    text-align: center;
-    padding: 0.65rem 1rem;
   }
 }

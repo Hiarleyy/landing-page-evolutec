@@ -46,6 +46,25 @@
   object-fit: contain;
   object-position: bottom;
   pointer-events: none;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.contato-avatar.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Ícones sociais flutuantes */
@@ -59,24 +78,70 @@
   justify-content: center;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
   z-index: 2;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contato-social:hover {
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.contato-social svg {
+  transition: transform 0.3s ease;
+}
+
+.contato-social:hover svg {
+  transform: scale(1.1);
 }
 
 .contato-social--whatsapp {
   background: #25d366;
   top: 0;
   left: 55%;
+  animation: float-whatsapp 3s ease-in-out infinite;
 }
 
 .contato-social--facebook {
   background: #1877f2;
   left: 0;
   top: 30%;
+  animation: float-facebook 3.5s ease-in-out infinite;
 }
 
 .contato-social--instagram {
   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
   left: 5px;
   top: 55%;
+  animation: float-instagram 4s ease-in-out infinite;
+}
+
+/* Animações de flutuação */
+@keyframes float-whatsapp {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes float-facebook {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(-12px) translateX(5px);
+  }
+}
+
+@keyframes float-instagram {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-18px);
+  }
 }
 
 /* ===== Lado formulário (direita) ===== */

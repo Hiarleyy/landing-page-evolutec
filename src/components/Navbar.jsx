@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { MessageCircle } from 'lucide-react'
 import './Navbar.css'
 
 function Navbar() {
@@ -8,8 +9,31 @@ function Navbar() {
   const closeMenu = () => setMenuOpen(false)
 
   return (
-    <nav className="navbar">
-      <div className="navbar-container">
+    <>
+      {/* Top Bar */}
+      <div className="top-bar">
+        <div className="top-bar-container">
+          <a href="https://wa.me/" className="top-bar-link whatsapp-link">
+            <MessageCircle size={16} />
+            Matricule-se pelo WhatsApp
+          </a>
+          <div className="top-bar-right">
+            <a href="cta0" className="top-bar-link">
+              VENHA VOCÊ TAMBÉM FAZER PARTE DO EVOLUTEC!
+            </a>
+            <a href="#cta1" className="top-bar-btn btn-outline">
+              Área do Aluno
+            </a>
+            <a href="#cta2" className="top-bar-btn btn-yellow">
+              Fale Conosco
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      {/* Main Navbar */}
+      <nav className="navbar">
+        <div className="navbar-container">
         <a href="#" className="navbar-logo">
           <img src="/evolutec-logo.png" alt="" className="logo-img"/>
           <svg width="138" height="35" viewBox="0 0 138 35" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -33,13 +57,9 @@ function Navbar() {
           <li><a href="#sobre" onClick={closeMenu}>SOBRE EVOLUTEC</a></li>
           <li><a href="#matricule" onClick={closeMenu}>MATRICULE-SE</a></li>
         </ul>
-
-        <div className={`navbar-buttons${menuOpen ? ' active' : ''}`}>
-          <a href="#cta1" className="btn-red">Área do Aluno</a>
-          <a href="#cta2" className="btn-yellow">Fale Conosco</a>
-        </div>
       </div>
     </nav>
+    </>
   )
 }
 
