@@ -32,6 +32,28 @@ const AuthorityStats = () => {
 
   return (
     <section className="authority-section">
+      <div className="top-stats-bar">
+        <div className="top-stat">
+          <span className="top-stat-number">+5k</span>
+          <span className="top-stat-label">Alunos Formados</span>
+        </div>
+        <div className="top-stat-divider"></div>
+        <div className="top-stat">
+          <span className="top-stat-number">15+</span>
+          <span className="top-stat-label">Anos de História</span>
+        </div>
+        <div className="top-stat-divider"></div>
+        <div className="top-stat">
+          <span className="top-stat-number">4</span>
+          <span className="top-stat-label">Unidades Físicas</span>
+        </div>
+        <div className="top-stat-divider"></div>
+        <div className="top-stat">
+          <span className="top-stat-number">98%</span>
+          <span className="top-stat-label">Satisfação</span>
+        </div>
+      </div>
+
       <div className="authority-container">
         
         {/* Lado Esquerdo - Informações */}

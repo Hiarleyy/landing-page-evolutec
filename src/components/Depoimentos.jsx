@@ -84,10 +84,9 @@ function Depoimentos() {
               <p className="video-label">Assistir depoimento</p>
             </div>
 
-          <div className="depoimentos-conteudo">
-            <span className="depoimentos-subtitulo">{depoimento.titulo}</span>
+          <div className="depoimentos-conteudo depoimentos-conteudo-animado" key={currentIndex}>
             <h2 className="depoimentos-nome">{depoimento.nome}</h2>
-            <p className="depoimentos-texto">{depoimento.texto}</p>
+            <p className="depoimentos-texto">"{depoimento.texto}"</p>
 
             <div className="depoimentos-navegacao">
               <button 
