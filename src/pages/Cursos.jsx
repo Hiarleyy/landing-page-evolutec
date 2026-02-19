@@ -1,236 +1,167 @@
-import { useState } from 'react'
-import { Search, Clock, BookOpen } from 'lucide-react';
-import './Cursos.css'
+import React from 'react';
+import './Cursos.css';
 
-const categorias = ['Todos', 'Tecnologia', 'Comércio', 'Técnicos', 'Saúde']
+// Ícones SVG simples para não depender de bibliotecas externas
+const ClockIcon = () => (
+  <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+);
 
-const cursos = [
+const BookIcon = () => (
+  <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+);
+
+const ArrowIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+);
+
+const CourseCard = ({ 
+  title, 
+  category, 
+  image, 
+  mode = "EAD", // Padrão EAD
+  duration, 
+  hours, 
+  tag,
+  onDetailClick 
+}) => {
+  return (
+    <div className="card-container">
+      {/* Imagem e Badge */}
+      <div className="image-wrapper">
+        <div className="badge">
+          <span className="badge-dot"></span>
+          {mode}
+        </div>
+        <img src={image} alt={title} className="card-image" />
+      </div>
+
+      {/* Conteúdo */}
+      <div className="card-content">
+        <span className="category">{category}</span>
+        <h3 className="card-title">{title}</h3>
+
+        {/* Info Meta: Tempo e Horas */}
+        <div className="meta-info">
+          <div className="meta-item">
+            <ClockIcon />
+            <span>{duration}</span>
+          </div>
+          <div className="meta-item">
+            <BookIcon />
+            <span>{hours}</span>
+          </div>
+        </div>
+
+        {/* Footer: Tag e Botão */}
+        <div className="card-footer">
+          <span className="tag">{tag}</span>
+          <button className="btn-details" onClick={onDetailClick}>
+            Ver detalhes <ArrowIcon />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Dados dos cursos
+const cursosData = [
   {
     id: 1,
-    nome: 'Técnico em Operador de Caixa',
-    categoria: 'Comércio',
-    modalidade: 'EAD',
-    tag: 'comercial',
-    tagColor: '#e63946',
-    imagem: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=400&fit=crop',
-    duracao: '6 meses',
-    cargaHoraria: '160h',
+    title: "Administração",
+    category: "GESTÃO",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop",
+    mode: "EAD",
+    duration: "2 anos",
+    hours: "1600h",
+    tag: "Graduação"
   },
   {
     id: 2,
-    nome: 'Conectividade e Tecnologia',
-    categoria: 'Tecnologia',
-    modalidade: 'EAD',
-    tag: 'tecnologia',
-    tagColor: '#e63946',
-    imagem: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=400&fit=crop',
-    duracao: '8 meses',
-    cargaHoraria: '200h',
+    title: "Enfermagem",
+    category: "SAÚDE",
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=300&fit=crop",
+    mode: "Presencial",
+    duration: "4 anos",
+    hours: "4000h",
+    tag: "Graduação"
   },
   {
     id: 3,
-    nome: 'Técnico em Enfermagem',
-    categoria: 'Saúde',
-    modalidade: 'EAD',
-    tag: 'Saúde',
-    tagColor: '#e63946',
-    imagem: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop',
-    duracao: '18 meses',
-    cargaHoraria: '1200h',
+    title: "Técnico em Informática",
+    category: "TECNOLOGIA",
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop",
+    mode: "EAD",
+    duration: "18 meses",
+    hours: "1200h",
+    tag: "Técnico"
   },
   {
     id: 4,
-    nome: 'Técnico em Hotelaria e Turismo',
-    categoria: 'Comércio',
-    modalidade: 'EAD',
-    tag: 'comercial',
-    tagColor: '#e63946',
-    imagem: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=400&h=400&fit=crop',
-    duracao: '12 meses',
-    cargaHoraria: '800h',
+    title: "Marketing Digital",
+    category: "MARKETING",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
+    mode: "EAD",
+    duration: "6 meses",
+    hours: "200h",
+    tag: "Curso Livre"
   },
   {
     id: 5,
-    nome: 'Profissional em Vendas',
-    categoria: 'Comércio',
-    modalidade: 'EAD',
-    tag: 'Comercial',
-    tagColor: '#e63946',
-    imagem: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&h=400&fit=crop',
-    duracao: '4 meses',
-    cargaHoraria: '120h',
+    title: "Segurança do Trabalho",
+    category: "SEGURANÇA",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop",
+    mode: "Presencial",
+    duration: "2 anos",
+    hours: "1500h",
+    tag: "Técnico"
   },
   {
     id: 6,
-    nome: 'Atendente de Farmácia',
-    categoria: 'Saúde',
-    modalidade: 'EAD',
-    tag: 'Saúde',
-    tagColor: '#e63946',
-    imagem: 'https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=400&h=400&fit=crop',
-    duracao: '6 meses',
-    cargaHoraria: '160h',
-  },
-  {
-    id: 7,
-    nome: 'Auxiliar Administrativo',
-    categoria: 'Comércio',
-    modalidade: 'EAD',
-    tag: 'Administrativo',
-    tagColor: '#e63946',
-    imagem: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=400&fit=crop',
-    duracao: '5 meses',
-    cargaHoraria: '140h',
-  },
-  {
-    id: 8,
-    nome: 'Cuidador de Idosos',
-    categoria: 'Saúde',
-    modalidade: 'Presencial',
-    tag: 'Saúde',
-    tagColor: '#e63946',
-    imagem: 'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=400&h=400&fit=crop',
-    duracao: '10 meses',
-    cargaHoraria: '220h',
-  },
-  {
-    id: 9,
-    nome: 'Design Gráfico',
-    categoria: 'Tecnologia',
-    modalidade: 'EAD',
-    tag: 'Criativo',
-    tagColor: '#e63946',
-    imagem: 'https://images.unsplash.com/photo-1626785774573-4b799314346d?w=400&h=400&fit=crop',
-    duracao: '12 meses',
-    cargaHoraria: '300h',
-  },
-  {
-    id: 10,
-    nome: 'Operador de Empilhadeira',
-    categoria: 'Técnicos',
-    modalidade: 'Presencial',
-    tag: 'Logística',
-    tagColor: '#e63946',
-    imagem: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=400&fit=crop',
-    duracao: '3 meses',
-    cargaHoraria: '80h',
-  },
-  {
-    id: 11,
-    nome: 'Inglês Profissional',
-    categoria: 'Comércio',
-    modalidade: 'EAD',
-    tag: 'Idiomas',
-    tagColor: '#e63946',
-    imagem: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?w=400&h=400&fit=crop',
-    duracao: '18 meses',
-    cargaHoraria: '180h',
-  },
-  {
-    id: 12,
-    nome: 'Eletricista Instalador',
-    categoria: 'Técnicos',
-    modalidade: 'Presencial',
-    tag: 'Industrial',
-    tagColor: '#e63946',
-    imagem: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&h=400&fit=crop',
-    duracao: '6 meses',
-    cargaHoraria: '200h',
-  },
-]
+    title: "Design Gráfico",
+    category: "DESIGN",
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop",
+    mode: "EAD",
+    duration: "1 ano",
+    hours: "800h",
+    tag: "Profissionalizante"
+  }
+];
 
 function Cursos() {
-  const [filtro, setFiltro] = useState('Todos')
-  const [busca, setBusca] = useState('')
-
-  const cursosFiltrados = cursos.filter((curso) => {
-    const matchCategoria = filtro === 'Todos' || curso.categoria === filtro
-    const matchBusca = curso.nome.toLowerCase().includes(busca.toLowerCase())
-    return matchCategoria && matchBusca
-  })
+  const handleDetailClick = (cursoId) => {
+    console.log(`Ver detalhes do curso ${cursoId}`);
+    // Aqui você pode adicionar navegação ou modal com mais detalhes
+  };
 
   return (
-    <section className="cursos" id="cursos">
-      {/* Barra de busca */}
-      <div className="cursos-busca">
-        <span className="busca-icon">
-        <Search />
-        </span>
-        <input
-          type="text"
-          placeholder="Busque seu curso de interesse ..."
-          value={busca}
-          onChange={(e) => setBusca(e.target.value)}
-        />
+    <section className="cursos-section" id="cursos">
+      <div className="cursos-container">
+        <div className="cursos-header">
+          <h2 className="cursos-titulo">Nossos Cursos</h2>
+          <p className="cursos-subtitulo">
+            Encontre o curso ideal para sua carreira profissional
+          </p>
+        </div>
+        
+        <div className="cursos-grid">
+          {cursosData.map((curso) => (
+            <CourseCard
+              key={curso.id}
+              title={curso.title}
+              category={curso.category}
+              image={curso.image}
+              mode={curso.mode}
+              duration={curso.duration}
+              hours={curso.hours}
+              tag={curso.tag}
+              onDetailClick={() => handleDetailClick(curso.id)}
+            />
+          ))}
+        </div>
       </div>
-
-      {/* Filtros de categoria */}
-      <div className="cursos-filtros">
-        {categorias.map((cat) => (
-          <button
-            key={cat}
-            className={`filtro-btn${filtro === cat ? ' active' : ''}`}
-            onClick={() => setFiltro(cat)}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
-
-      {/* Grid de cursos */}
-      <div className="cursos-grid">
-        {cursosFiltrados.map((curso) => (
-          <div key={curso.id} className="curso-card">
-            
-            {/* Seção da Imagem (Topo) */}
-            <div className="curso-img-container">
-              <span className="curso-badge-overlay">
-                <span className="badge-dot"></span> {curso.modalidade}
-              </span>
-              <img src={curso.imagem} alt={curso.nome} className="curso-img" />
-            </div>
-            
-            {/* Corpo do Card */}
-            <div className="curso-content">
-              <h3 className="curso-nome">{curso.nome}</h3>
-              <p className="curso-categoria-text">
-                Curso profissionalizante em {curso.categoria}
-              </p>
-              
-              <div className="curso-divider"></div>
-
-              <div className="curso-meta-row">
-                <div className="meta-item">
-                  <Clock size={16} />
-                  <span>{curso.duracao}</span>
-                </div>
-                <div className="meta-divider"></div>
-                <div className="meta-item">
-                  <BookOpen size={16} />
-                  <span>{curso.cargaHoraria}</span>
-                </div>
-                <div className="meta-divider"></div>
-                <div className="meta-item">
-                  <span>Certificado</span>
-                </div>
-              </div>
-
-              <div className="curso-tags-row">
-                <span className="curso-pill">{curso.tag}</span>
-                <span className="curso-pill">Presencial/EAD</span>
-              </div>
-
-              <button className="curso-btn-action">
-                Ver detalhes
-              </button>
-            </div>
-
-          </div>
-        ))}
-      </div>
-
     </section>
-  )
+  );
 }
 
-export default Cursos
+export default Cursos;
