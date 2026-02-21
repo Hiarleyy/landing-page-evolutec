@@ -18,7 +18,6 @@ function App() {
       <Cursos/>
       <Contato/>
       <Autoridade/>
-      <Depoimentos/>
       <RedesSociais/>
       <Blog/>
       <Mapa/>
